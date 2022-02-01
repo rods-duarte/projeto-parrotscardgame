@@ -23,7 +23,7 @@ body {
     height: 146px;
     margin: 10px;
     
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -45,6 +45,6 @@ h1 {
 /* Inicio ajuste das cartas */
 
 #carta1, #carta2, #carta3, #carta4, #carta5, #carta6, #carta7 {
-    display: block;
+    display: flex;
 }
 

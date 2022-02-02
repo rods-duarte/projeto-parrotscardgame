@@ -16,19 +16,17 @@ body {
     flex-wrap: wrap;
 }
 
-.carta-virada {
+.carta {
     min-width: 117px;
     width: 117px;
     min-height: 146px;
     height: 146px;
     margin: 10px;
+    border-radius: 10px;
     
     display: none;
     justify-content: center;
     align-items: center;
-
-    background-color: #a7e9af;
-    border: 1px solid #99cea8;
 }
 
 img {
@@ -47,4 +45,38 @@ h1 {
 #carta1, #carta2, #carta3, #carta4, #carta5, #carta6, #carta7 {
     display: flex;
 }
+
+/* Animacao carta virar */
+.carta {
+    width: 200px;
+    height: 250px;
+    position: relative;
+  }
+
+  .carta > div {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+
+  .verso {
+    transform: rotateY(180deg);
+  }
+
+  .verso-animacao {
+    transform: rotateY(0deg);
+  }
+
+  .frente-animacao {
+    transform: rotateY(-180deg);
+  }
 

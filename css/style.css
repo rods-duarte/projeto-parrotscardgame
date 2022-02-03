@@ -1,82 +1,80 @@
 /* Import fonte */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body { 
-    background-color: #EEF9BF;
+body {
+  background-color: #eef9bf;
 }
 
 #jogo {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .carta {
-    min-width: 117px;
-    width: 117px;
-    min-height: 146px;
-    height: 146px;
-    margin: 10px;
-    border-radius: 10px;
-    
-    display: none;
-    justify-content: center;
-    align-items: center;
+  min-width: 117px;
+  width: 117px;
+  min-height: 146px;
+  height: 146px;
+  margin: 10px;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
-    width: 117px;
+  width: 117px;
 }
 
 h1 {
-    font-family: "Roboto", sans-serif;
-    font-size: 56px;
-    color: #75B79E;
-    text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 56px;
+  color: #75b79e;
+  text-align: center;
 }
 
 /* Inicio ajuste das cartas */
 
-#carta1, #carta2, #carta3, #carta4, #carta5, #carta6, #carta7 {
-    display: flex;
-}
-
 /* Animacao carta virar */
 .carta {
-    width: 200px;
-    height: 250px;
-    position: relative;
-  }
+  width: 200px;
+  height: 250px;
+  position: relative;
+}
 
-  .carta > div {
-    width: 100%;
-    height: 100%;
-    background-color: #A7E9AF;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    backface-visibility: hidden;
-    transition: all .5s;
-    transform-style: preserve-3d;
-  }
+.carta > div {
+  width: 100%;
+  height: 100%;
+  background-color: #a7e9af;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+}
 
-  .verso {
-    transform: rotateY(180deg);
-  }
+.verso {
+  transform: rotateY(180deg);
+}
 
-  .verso-animacao {
-    transform: rotateY(0deg);
-  }
+.verso-animacao {
+  transform: rotateY(0deg);
+}
 
-  .frente-animacao {
-    transform: rotateY(-180deg);
-  }
+.frente-animacao {
+  transform: rotateY(-180deg);
+}
 
+.fora-do-jogo {
+  display: none;
+}

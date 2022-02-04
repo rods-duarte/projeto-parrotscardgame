@@ -2,6 +2,8 @@ var cartas = document.querySelectorAll(`.carta`);
 var primeiraCarta = true;
 var carta1,carta2, numeroDeCartas;
 var bloquear = false; 
+var jogadas = 0;
+var tempo = 1;
 
 // prepara o numero de cartas em jogo
 function preparaCartas() {
@@ -29,12 +31,14 @@ function embaralharCartas() {
 
 // virar carta
 function virarCarta(carta) {
+    if(jogadas === 0) {setInterval(contarTempo, 1000);}  // Inicia o cronometro na primeira jogada
     if(bloquear) {return};  // impede que uma terceira carta seja selecionada enquanto outras duas sao processadas
     console.log(carta);
     if(carta === carta1) {return};  // se selecionar carta ja virada
 
     carta.querySelector(".frente").classList.add("frente-animacao");
     carta.querySelector(".verso").classList.add("verso-animacao");
+    jogadas ++; // Atualiza pontuacao
 
     if(primeiraCarta) {
         primeiraCarta = false;
@@ -44,6 +48,7 @@ function virarCarta(carta) {
 
     carta2 = carta;
     checarMatch();
+
 }
 
 // desvirar cartas
@@ -63,6 +68,14 @@ function desvirarCartas() {
 function checarMatch() {
     if(carta1.id === carta2.id) {
         desabilitarCartas();
+        numeroDeCartas -= 2;
+        
+        // checa se o jogo terminou
+        if (numeroDeCartas === 0) {
+            setTimeout(() => {alert(`Voce ganhou em ${jogadas} jogadas! (${tempo-1} segundos)`)}, 500);
+            // implementar reiniciar partida aqui 
+        } 
+        
     } else {
         bloquear = true;
         setTimeout(desvirarCartas, 1000);
@@ -81,8 +94,13 @@ function desabilitarCartas() {
     bloquear = false;
 }
 
-
+// cronometro
+function contarTempo() {
+    if(numeroDeCartas === 0) {return};
+    document.querySelector(`.timer`).innerHTML = tempo;
+    tempo++;
+}
 
 embaralharCartas();
 preparaCartas();
-console.log(numeroDeCartas)
+

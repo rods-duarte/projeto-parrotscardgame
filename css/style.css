@@ -59,6 +59,7 @@ h1 {
   justify-content: center;
   position: absolute;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari */
   transition: all 0.5s;
   transform-style: preserve-3d;
 }
@@ -78,4 +79,17 @@ h1 {
 
 .fora-do-jogo {
   display: none;
+}
+
+.timer {
+  color: #e00;
+  display: inline-block;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  width: fit-content;
+
+  position: fixed;
+  right: 100px;
+  top: 10px;
 }

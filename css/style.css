@@ -65,6 +65,7 @@ h1 {
 
 .verso {
   transform: rotateY(180deg);
+  transition-duration: 1000ms;
 }
 
 .verso-animacao {

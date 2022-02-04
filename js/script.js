@@ -1,6 +1,7 @@
-let cartas = document.querySelectorAll(`.carta`);
-let primeiraCarta = true;
-let carta1,carta2, numeroDeCartas;
+var cartas = document.querySelectorAll(`.carta`);
+var primeiraCarta = true;
+var carta1,carta2, numeroDeCartas;
+var bloquear = false; 
 
 // prepara o numero de cartas em jogo
 function preparaCartas() {
@@ -26,40 +27,9 @@ function embaralharCartas() {
     }
 }
 
-// checar por Match
-function checarMatch() {
-    if(carta1.id === carta2.id) {
-        desabilitarCartas();
-    } else {
-        let cartaAux1 = carta1;
-        let cartaAux2 = carta2;
-        setTimeout(() => {desvirarCartas(cartaAux1, cartaAux2)}, 1000); 
-        // Por algum motivo, quando uso setTimeout ele atualiza as variaveis fora da funcao para o valor original, em especial carta1 e carta2 para null e acaba quebrando o jogo. Nao consegui descobrir o porque e a maneira mais facil que encontrei de "burlar" esse efeito foi com o uso de variaveis auxiliares
-    } 
-    // reset pro padrao
-    carta1 = carta2 = null;
-    primeiraCarta = true;
-}
-
-// desabilita as cartas iguais
-function desabilitarCartas() {
-    
-    carta2.setAttribute("onclick", "");
-    carta1.setAttribute("onclick", "");
-}
-
-// desvirar carta
-function desvirarCartas(carta1, carta2) {
-    carta1.querySelector(".verso").classList.remove("verso-animacao");
-    carta2.querySelector(".verso").classList.remove("verso-animacao");
-    
-    carta1.querySelector(".frente").classList.remove("frente-animacao");
-    carta2.querySelector(".frente").classList.remove("frente-animacao");
-    
-}
-
 // virar carta
 function virarCarta(carta) {
+    if(bloquear) {return};  // impede que uma terceira carta seja selecionada enquanto outras duas sao processadas
     console.log(carta);
     if(carta === carta1) {return};  // se selecionar carta ja virada
 
@@ -75,6 +45,43 @@ function virarCarta(carta) {
     carta2 = carta;
     checarMatch();
 }
+
+// desvirar cartas
+function desvirarCartas() {
+    carta1.querySelector(".verso").classList.remove("verso-animacao");
+    carta2.querySelector(".verso").classList.remove("verso-animacao");
+    
+    carta1.querySelector(".frente").classList.remove("frente-animacao");
+    carta2.querySelector(".frente").classList.remove("frente-animacao");
+    // reset pro padrao
+    carta1 = carta2 = null;
+    primeiraCarta = true;
+    bloquear = false; 
+}
+
+// checar por Match
+function checarMatch() {
+    if(carta1.id === carta2.id) {
+        desabilitarCartas();
+    } else {
+        bloquear = true;
+        setTimeout(desvirarCartas, 1000);
+        // consegui resolver utilizando var no lugar de let 
+    } 
+}
+
+// desabilita as cartas iguais
+function desabilitarCartas() {
+    
+    carta2.setAttribute("onclick", "");
+    carta1.setAttribute("onclick", "");
+    // reset pro padrao
+    carta1 = carta2 = null;
+    primeiraCarta = true;
+    bloquear = false;
+}
+
+
 
 embaralharCartas();
 preparaCartas();

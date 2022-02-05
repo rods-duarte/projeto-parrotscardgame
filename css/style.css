@@ -37,6 +37,7 @@ h1 {
   font-size: 56px;
   color: #75b79e;
   text-align: center;
+  margin: 50px 0 20px 0;
 }
 
 /* Inicio ajuste das cartas */
@@ -83,13 +84,11 @@ h1 {
 
 .timer {
   color: #e00;
-  display: inline-block;
+  display: block;
   font-size: 30px;
+  text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  width: fit-content;
-
-  position: fixed;
-  right: 100px;
-  top: 10px;
+  width: 100%;
+  height: fit-content;
 }

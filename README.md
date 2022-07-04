@@ -5,7 +5,7 @@ A themed memory game with randomness, effects and transition, responsiveness and
 <br>
 
 <div align=center style="display:flex; justify-content: center; gap:5%">
-    <img style="width: 50%;" src="/img/parrots-mockup.png" />
+    <img style="width: 50%;" src="/img/parrots.gif" />
 </div>
 
 # Features
